@@ -1,7 +1,6 @@
 package com.isamotiuc.ebstestapplication
 
 import androidx.annotation.CallSuper
-import io.reactivex.Scheduler
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
@@ -15,10 +14,5 @@ abstract class BaseTestCase {
         MockitoAnnotations.initMocks(this)
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
-    }
-
-    interface SchedulerProvider {
-        fun io(): Scheduler
-        fun ui(): Scheduler
     }
 }
